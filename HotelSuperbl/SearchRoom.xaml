@@ -1,0 +1,46 @@
+﻿<Page x:Class="HotelSuperbl.SearchRoom"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:HotelSuperbl"
+      mc:Ignorable="d"
+      Title="SearchRoom" Height="300" Width="300">
+
+    <Grid>
+        <Grid.Background>
+          
+
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF12A0D4" Offset="0.03"/>
+                    <GradientStop Color="#FFF6FCFD" Offset="0.87"/>
+                </LinearGradientBrush>
+           
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" Background="White" FontFamily="Yu Gothic UI Semiligh" Content="Бронирование"/>
+        <DatePicker HorizontalAlignment="Left" Margin="25,26,0,0" Grid.Row="1" VerticalAlignment="Bottom" Width="246" SelectedDate="{x:Static sys:DateTime.Now}"/>
+        <DatePicker HorizontalAlignment="Left" Margin="25,26,0,0" Grid.Row="2" VerticalAlignment="Bottom" Width="246" SelectedDate="{x:Static sys:DateTime.Now}"/>
+        <Label Margin="10,0,10,0" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Yu Gothic UI Semiligh">
+            Дата заезда:
+        </Label>
+        <Label Margin="10,0,10,0" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Yu Gothic UI Semiligh">
+            Дата выезда:
+        </Label>
+        <Label Margin="10,0,10,0" Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Yu Gothic UI Semiligh">
+            Категория номера:
+        </Label>
+        <ComboBox x:Name="comboBoxCategory" HorizontalAlignment="Left" Margin="25,38,0,0" Grid.Row="3" VerticalAlignment="Top" Width="246" SelectionChanged="comboBox_SelectionChanged"/>
+        <Button x:Name="buttonSearch" Content="Поиск номеров" HorizontalAlignment="Center" Height="25" Grid.Row="4" VerticalAlignment="Stretch" Width="160" Background="#FFF1391B" Click="buttonSearch_Click" Foreground="#FFF1ECEC" FontSize="16" FontFamily="Yu Gothic UI Semiligh"/>
+    </Grid>
+</Page>

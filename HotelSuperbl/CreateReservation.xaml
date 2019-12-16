@@ -1,0 +1,67 @@
+﻿<Page x:Class="HotelSuperbl.CreateReservation"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+       xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:HotelSuperbl"
+      mc:Ignorable="d" 
+     
+      Title="CreateReservation" Height="466" Width="618">
+
+    <Page.Background>
+        <SolidColorBrush Color="White" Opacity="0.5"/>
+    </Page.Background>
+    <Border CornerRadius="20" Margin="20">
+
+        <Border.Background>
+
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF12A0D4" Offset="0.03"/>
+                <GradientStop Color="#FFF6FCFD" Offset="0.87"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <StackPanel Background="#FFEEFDFD" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+            <Grid Height="40">
+                <StackPanel HorizontalAlignment="Stretch" Background="White" Margin="0,0,0,-15">
+                    <Label FontSize="20" Foreground="Black" FontFamily="Segoe UI" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50" Margin="141,10,10,10" Content="  СОЗДАТЬ НОВУЮ БРОНЬ" />
+                </StackPanel>
+            </Grid>
+            <GroupBox  HorizontalAlignment="Left" Height="621" Width="578"  >
+                <GroupBox.Background>
+
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FF12A0D4" Offset="0.03"/>
+                        <GradientStop Color="#FFF6FCFD" Offset="0.87"/>
+                    </LinearGradientBrush>
+                </GroupBox.Background>
+                <Grid>
+
+
+                    <Label x:Name ="labelDateReservation" Content="Дата бронирования" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="14" Foreground="White"/>
+                    <DatePicker Width="247" Height="30" HorizontalAlignment="Left" BorderBrush="#FFF3F8FF" Background="#00000000" SelectedDate="{x:Static sys:DateTime.Now}" FontSize="14" FontFamily="Segoe UI" Margin="309,110,0,459"/>
+                    <Label x:Name ="labelArrivalDate" Content="Дата заезда" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="14" Foreground="White"/>
+                    <DatePicker Width="243" Height="30" HorizontalAlignment="Left" BorderBrush="#FFF3F8FF" Background="#00000000" SelectedDate="{x:Static sys:DateTime.Now}" FontSize="14" FontFamily="Segoe UI" Margin="10,113,0,456"/>
+                    <Label x:Name ="labelDate_of_Departure" Foreground="White" Content="Дата выезда" HorizontalAlignment="Left" Margin="309,76,0,0" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="14"/>
+                    <DatePicker Width="243" Height="30" HorizontalAlignment="Left" BorderBrush="#FFF3F8FF" Background="#00000000" SelectedDate="{x:Static sys:DateTime.Now}" FontSize="14" FontFamily="Segoe UI" Margin="10,41,0,528"/>
+                    <Label x:Name ="labelclient_code" Content="Код клиента" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="14" Foreground="White"/>
+                    <ComboBox x:Name="Comboboxclient_code" Width="243" HorizontalAlignment="Left" Height="30" FontFamily="Segoe UI" FontSize="14" Margin="10,185,0,384" Background="Black"/>
+                    <Label x:Name ="labelId_room"  Foreground="White" Content="Код номера" HorizontalAlignment="Left" Margin="309,148,0,0" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="14"/>
+                    <ComboBox x:Name="Comboboxroom_code" Width="247" HorizontalAlignment="Left" Height="30" FontFamily="Segoe UI" FontSize="14" Margin="309,185,0,384"/>
+                    <Label x:Name ="labelnumber_of_guests"  Foreground="White" Content="Количество гостей" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="14"/>
+                    <TextBox x:Name="textBoxGuests" Width="243" Height="30" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="14" Margin="10,254,0,315"/>
+                    <Label x:Name ="labelstatus" Foreground="White" Content="Статус" HorizontalAlignment="Left" Margin="309,220,0,0" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="14"/>
+                    <TextBox x:Name="textBoxStatus"  Width="247" Height="30" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="14" Margin="309,254,0,315"/>
+                    <Label x:Name ="labelId_user" Foreground="White" Content="Код работника" HorizontalAlignment="Left" Margin="309,10,0,0" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="14"/>
+                    <ComboBox x:Name="ComboboxId_user" Width="247" HorizontalAlignment="Left" Height="30" FontFamily="Segoe UI" FontSize="14" Margin="309,41,0,528"/>
+                    <Button x:Name="buttonSaveReservation" Content="Сохранить" Width="120" Height="30" HorizontalAlignment="Right" Margin="0,322,10,263" FontFamily="Segoe UI" FontWeight="Bold" FontSize="14" Background="#FFF1391B" Foreground="White"/>
+
+                </Grid>
+
+            </GroupBox>
+        </StackPanel>
+    </Border>
+
+</Page>

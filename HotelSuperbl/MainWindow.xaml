@@ -1,0 +1,12 @@
+﻿<NavigationWindow x:Class="HotelSuperbl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        Title="MainWindow" Height="600" Width="1080"  Icon="C:\Users\mariy\Desktop\КонструированиеПО\HotelSuperbl\HotelSuperbl\Icons\logo.png" Source="HotelItHome.xaml">
+
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\mariy\Desktop\КонструированиеПО\HotelSuperbl\HotelSuperbl\Icons\Жемчужина-Северной-Карелии-хрустальное-озеро-Куйто-014.jpg"/>
+    </Window.Background>
+    
+    
+</NavigationWindow>

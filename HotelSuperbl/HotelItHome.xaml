@@ -1,0 +1,68 @@
+﻿<Page x:Class="HotelSuperbl.HotelItHome"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HotelSuperbl"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1080"
+      Title="HotelItHome">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\mariy\Desktop\КонструированиеПО\HotelSuperbl\HotelSuperbl\Icons\Жемчужина-Северной-Карелии-хрустальное-озеро-Куйто-019.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="3" FontSize="34" FontFamily="Yu Gothic UI Semibold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" >
+            Добро пожаловать
+        </Label>
+        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" FontSize="30" FontFamily="Yu Gothic UI Semibold" HorizontalAlignment="Center" Foreground="White" >
+
+            Выберите пользователя
+        </Label>
+        <ListBox Name="UserListBox" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="3" FontSize="20" FontFamily="Ya Gothic UI Semilight " HorizontalAlignment="Center" Width="352" Margin="56,0,55,0">
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0DAFBF" Offset="0.157"/>
+                    <GradientStop Color="#FFB8E2E4" Offset="1"/>
+                    <GradientStop Color="#FF43E7F3" Offset="0.984"/>
+                    <GradientStop Color="#FF3FE3EF" Offset="0.618"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
+            <ListBoxItem Margin="0,10,0,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" >Управляющий отелем</ListBoxItem>
+            <ListBoxItem Margin="0,10,0,10"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White">Менеджер по бронированию</ListBoxItem>
+            <ListBoxItem Margin="0,10,0,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Foreground="White">Менеджер состояния номеров</ListBoxItem>
+
+
+        </ListBox>
+        <Button Click="Button_Click1"  Grid.Row="6" Foreground="White" Grid.Column="3" FontSize="20" FontFamily="Ya Gothic UI Semilight" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="54,25,55,0" Width="200" Height="50">
+            <Button.Background>
+                <SolidColorBrush Color="#FFF1391B"/>
+            </Button.Background>
+            Войти
+        </Button>
+
+
+
+    </Grid>
+</Page>
+
+
