@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\mariy\Desktop\КонструированиеПО\HotelSuperbl\HotelSuperbl\Icons\Жемчужина-Северной-Карелии-хрустальное-озеро-Куйто-019.jpg"/>
+            <ImageBrush ImageSource="C:\Users\mariy\Desktop\КонструированиеПО\HotelSuperbl\HotelSuperbl\Image\Жемчужина-Северной-Карелии-хрустальное-озеро-Куйто-019.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

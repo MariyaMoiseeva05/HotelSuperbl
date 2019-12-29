@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,8 +38,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,25 +67,91 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CreateReservation.xaml.cs">
+    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Models\Accommodation.cs" />
+    <Compile Include="Models\Additional_services.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\HotelContext.cs" />
+    <Compile Include="Models\Hotel_room.cs" />
+    <Compile Include="Models\Reports.cs" />
+    <Compile Include="Models\Reservation.cs" />
+    <Compile Include="Models\Room_category.cs" />
+    <Compile Include="Models\Service_check.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="ViewModels\AccommodationViewModel.cs" />
+    <Compile Include="ViewModels\AddAccommodationViewModel.cs" />
+    <Compile Include="ViewModels\AddClientViewModel.cs" />
+    <Compile Include="ViewModels\Additional_servicesViewModel.cs" />
+    <Compile Include="ViewModels\ClientViewModel.cs" />
+    <Compile Include="ViewModels\CreateReservationViewModel.cs" />
+    <Compile Include="ViewModels\Hotel_roomViewModel.cs" />
+    <Compile Include="ViewModels\IRequireViewIdentification.cs" />
+    <Compile Include="ViewModels\LoginPasswordViewModel.cs" />
+    <Compile Include="ViewModels\NewUslugaViewModel.cs" />
+    <Compile Include="ViewModels\ReportsViewModel.cs" />
+    <Compile Include="ViewModels\ReservationViewModel.cs" />
+    <Compile Include="ViewModels\Room_categoryViewModel.cs" />
+    <Compile Include="ViewModels\Service_checkViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\WindowManager.cs" />
+    <Compile Include="Views\AccommodationView.xaml.cs">
+      <DependentUpon>AccommodationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddAccommodationView.xaml.cs">
+      <DependentUpon>AddAccommodationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddClient.xaml.cs">
+      <DependentUpon>AddClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateReservation.xaml.cs">
       <DependentUpon>CreateReservation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SearchRoom.xaml.cs">
+    <Compile Include="Views\NewUsluga.xaml.cs">
+      <DependentUpon>NewUsluga.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report.xaml.cs">
+      <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Room_categoryView.xaml.cs">
+      <DependentUpon>Room_categoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchReservation.xaml.cs">
+      <DependentUpon>SearchReservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchRoom.xaml.cs">
       <DependentUpon>SearchRoom.xaml</DependentUpon>
     </Compile>
-    <Page Include="CreateReservation.xaml">
+    <Compile Include="Views\SearchService_check.xaml.cs">
+      <DependentUpon>SearchService_check.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Service_checkView.xaml.cs">
+      <DependentUpon>Service_checkView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\AccommodationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HotelItHome.xaml">
+    <Page Include="Views\AddAccommodationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginPassword.xaml">
+    <Page Include="Views\AddClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\CreateReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HotelItHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -81,34 +159,58 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HotelItHome.xaml.cs">
+    <Compile Include="Views\HotelItHome.xaml.cs">
       <DependentUpon>HotelItHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginPassword.xaml.cs">
+    <Compile Include="Views\LoginPassword.xaml.cs">
       <DependentUpon>LoginPassword.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Glavnoe.xaml">
+    <Page Include="Views\Glavnoe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OR.xaml">
+    <Page Include="Views\NewUsluga.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SearchRoom.xaml">
+    <Page Include="Views\OR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Room_categoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchService_check.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Service_checkView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Glavnoe.xaml.cs">
+    <Compile Include="Views\Glavnoe.xaml.cs">
       <DependentUpon>Glavnoe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OR.xaml.cs">
+    <Compile Include="Views\OR.xaml.cs">
       <DependentUpon>OR.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -128,6 +230,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -136,22 +239,25 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+    <Resource Include="Image\3884729_large.jpg" />
+    <Resource Include="Image\lodka.jpg" />
+    <Resource Include="Image\lodka1.jpg" />
+    <Resource Include="Image\Жемчужина-Северной-Карелии-хрустальное-озеро-Куйто-014.jpg" />
+    <Resource Include="Image\Жемчужина-Северной-Карелии-хрустальное-озеро-Куйто-019.jpg" />
+    <Resource Include="Image\Отель-ВелТ-Калевала-017.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\3884729_large.jpg" />
-    <Resource Include="Icons\lodka.jpg" />
-    <Resource Include="Icons\lodka1.jpg" />
-    <Resource Include="Icons\Жемчужина-Северной-Карелии-хрустальное-озеро-Куйто-014.jpg" />
-    <Resource Include="Icons\Жемчужина-Северной-Карелии-хрустальное-озеро-Куйто-019.jpg" />
-    <Resource Include="Icons\Отель-ВелТ-Калевала-017.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\logo.png" />
+    <Resource Include="Image\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HotelSuperbl.Models;
+using HotelSuperbl.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,16 +18,15 @@ using System.Windows.Shapes;
 namespace HotelSuperbl
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для CreateReservation.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class CreateReservation : Page
     {
-        public MainWindow()
+        public CreateReservation()
         {
             InitializeComponent();
-        }
+            DataContext = new CreateReservationViewModel();
 
-        
-      
+        }
     }
 }

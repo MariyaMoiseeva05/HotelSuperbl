@@ -1,0 +1,52 @@
+﻿<Page x:Class="HotelSuperbl.Views.SearchService_check"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HotelSuperbl.Views"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="800"
+      Title="SearchService_check">
+
+    <Grid>
+        <Grid   Background="White">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="200,60,200,340" >
+                <Label FontSize="24" Foreground="#FF348CD4" FontFamily="Segoe UI" Content="ОКАЗАННЫЕ УСЛУГИ" Width="243"/>
+            </StackPanel>
+
+        </Grid>
+        <DataGrid ItemsSource="{Binding Report}" SelectedItem="{Binding SelectedReportCheck}" Margin="0,80,0,0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" Name="dataGridViewClientSearch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата счёта" Binding="{Binding date}" Width="*"/>
+                <DataGridTextColumn Header="Код клиента" Binding="{Binding id_client}" Width="*"/>
+                <DataGridTextColumn Header="Номер счёта" Binding="{Binding id_check}" Width="*" />
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding surname}" Width="*"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding nameServ}" Width="*"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding patronymic}" Width="*"/>
+                <DataGridTextColumn Header="Услуга" Binding="{Binding name}" Width="*"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding current_price}" Width="*"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding quantity}" Width="*"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding sum }" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  Background="#FF2196F3">
+            <Grid>
+                <Label Content="Дата счёта" FontSize="16" Foreground="White" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label Content="Фамилия клиента" Grid.Column="0" Foreground="White" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <DatePicker Width="200" Height="30" BorderBrush="#FFF3F8FF" Background="#00000000" SelectedDate="{x:Static sys:DateTime.Now}" FontSize="14" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Name="DateTimePicker1"/>
+                <Button x:Name="buttonSearchAdUsl" Content="Найти" Width="120" Height="30" HorizontalAlignment="Right" Margin="0,4,29,6" FontFamily="Segoe UI" FontWeight="Bold" FontSize="14" Background="#FFF1391B" Foreground="White"  Grid.Column="1" Grid.Row="1" Click="ButtonServSearch_Click"/>
+                <ComboBox x:Name="ComboboxSurname" Width="200"  Height="30"  FontSize="14" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"></ColumnDefinition>
+                    <ColumnDefinition  Width="400"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

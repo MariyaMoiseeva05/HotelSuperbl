@@ -1,0 +1,72 @@
+﻿<Page x:Class="HotelSuperbl.Views.NewUsluga"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:HotelSuperbl.Views"
+      mc:Ignorable="d" 
+       
+      Title="NewUsluga" Height="500" Width="500">
+
+    <Page.Background>
+        <SolidColorBrush Color="White" Opacity="0.5"/>
+    </Page.Background>
+    <Border CornerRadius="20" Margin="20">
+
+        <Border.Background>
+
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF12A0D4" Offset="0.03"/>
+                <GradientStop Color="#FFF6FCFD" Offset="0.87"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <StackPanel Background="#FFEEFDFD" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+            <Grid Height="40">
+                <StackPanel HorizontalAlignment="Stretch" Background="White">
+                    <Label FontSize="18" Foreground="Black" FontFamily="Segoe UI" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" Margin="152,10,137,10" Content="ОКАЗАТЬ УСЛУГУ" />
+                </StackPanel>
+            </Grid>
+            <GroupBox  HorizontalAlignment="Left" Height="520" Width="460"  >
+                <GroupBox.Background>
+
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FF12A0D4" Offset="0.03"/>
+                        <GradientStop Color="#FFF6FCFD" Offset="0.87"/>
+                    </LinearGradientBrush>
+                </GroupBox.Background>
+                <Grid>
+                    <Label Content="Код клиента" Margin="10,60,331,423" FontSize="16" Foreground="White"/>
+                    <ComboBox ItemsSource="{Binding Cl}" SelectedItem="{Binding SeltctCl}"
+              DisplayMemberPath="client_code" SelectedValue="{Binding client_code}"
+              SelectedValuePath="client_code" 
+              Height="30" Margin="207,60,10,424" FontSize="16"/>
+
+                    <Label Content="Код услуги" Margin="10,111,331,373" FontSize="16" Foreground="White"/>
+                    <ComboBox ItemsSource="{Binding ClientViewModel}"
+              DisplayMemberPath="Client.surname"
+              SelectedValue="{Binding Client.client_code}"
+              SelectedValuePath="Client.client_code" Height="30" Margin="207,111,10,373" FontSize="16" />
+                    <Label Content="Дата" Margin="10,162,308,322" FontSize="16" Foreground="White"/>
+                    <DatePicker Width="231" Height="30" HorizontalAlignment="Left" BorderBrush="#FFF3F8FF" Background="#00000000" SelectedDate="{x:Static sys:DateTime.Now}" FontSize="14" FontFamily="Segoe UI" Margin="207,166,0,318"/>
+                    <Label Content="Количество" Margin="10,212,291,272" FontSize="16" Foreground="White"/>
+                    <TextBox Height="30" Margin="207,212,10,272" FontSize="16" Name="TextBox4" Text="{Binding Quantity}"/>
+                    <Label Content="Стоимость" Margin="10,263,308,201" FontSize="16" Foreground="Black"/>
+                    <TextBox Height="30" Margin="207,263,10,221" FontSize="16" Name="TextBox5"  Text="{Binding Cost_service}"/>
+                    <Label Content="Оплата" Margin="10,318,308,166" FontSize="16" Foreground="Black"/>
+                    <TextBox Height="30" Margin="207,318,10,166" FontSize="16" Name="TextBox6"  Text="{Binding Payment}"/>
+
+
+
+
+                    <Button x:Name="buttonSaveReservation" Content="Сохранить" Width="120" Height="30" HorizontalAlignment="Right" Margin="0,379,10,105" FontFamily="Segoe UI" FontWeight="Bold" FontSize="14" Background="#FFF1391B" Foreground="White" Command="{Binding AddCommandNC}" />
+
+                </Grid>
+
+            </GroupBox>
+        </StackPanel>
+    </Border>
+
+</Page>

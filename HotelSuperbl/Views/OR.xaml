@@ -1,0 +1,213 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:HotelSuperbl"
+      xmlns:Models="clr-namespace:HotelSuperbl.Models" x:Class="HotelSuperbl.OR"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1080"
+      Title="OR">
+
+    <StackPanel Background="WhiteSmoke" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid Height="40" Background="#FF348CD4">
+            <StackPanel HorizontalAlignment="Left" Margin="20 0">
+
+                <DatePicker Margin="5,5,5,5" SelectedDate="{x:Static sys:DateTime.Now}" FontSize="18" >
+                    <DatePicker.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                            <GradientStop Color="#FFF4F9F8" Offset="1"/>
+                            <GradientStop Color="#FF8BD5FF"/>
+                        </LinearGradientBrush>
+                    </DatePicker.BorderBrush>
+                </DatePicker>
+            </StackPanel>
+        </Grid>
+        <Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0" >
+                <Label FontSize="20" FontFamily="Segoe UI" Content="Гостиничный комплекс &quot;ВелТ&quot;">
+                    <Label.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF3E3761" Offset="0.309"/>
+                            <GradientStop Color="#FF1169D3" Offset="0.912"/>
+                        </LinearGradientBrush>
+                    </Label.Foreground>
+                </Label>
+            </StackPanel>
+        </Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+            <TabControl Margin="10" BorderBrush="Gainsboro" >
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TabItem}">
+                                    <Border x:Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,10,10,10"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#FF348CD4" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="#708090" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="Бронирование" FontSize="16" Foreground="White" Height="42" VerticalAlignment="Top"  >
+
+
+                    <Grid Margin="0,10,0,0"  Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="382,100,382,367" >
+                            <Label FontSize="24" Foreground="#FF348CD4" FontFamily="Segoe UI" Content="ВСЕ БРОНИ"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,70,10,800"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                            <Button x:Name="Save1" Command="{Binding SaveCommand}" Uid="0" Width="110" Content="Сохранить" Height="30" Background="{x:Null}" BorderBrush="#FF2196F3" Foreground="#FF2196F3"  FontSize="14" Margin="10"/>
+                            <Button x:Name="Update1" Uid="1" Width="110" Content="Изменить" Height="30" Background="{x:Null}" BorderBrush="#FF2196F3" Foreground="#FF2196F3" FontSize="14" Margin="10"/>
+                            <Button x:Name="Delete1" Command="{Binding RemoveCommandRes}" CommandParameter="{Binding SelectedReservation}" Uid="2" Width="110" Content="Удалить" Height="30" Background="{x:Null}" BorderBrush="#FF2196F3" Foreground="#FF2196F3" FontSize="14" Margin="10"/>
+                        </StackPanel>
+
+                        <DataGrid ItemsSource="{Binding Reservations}" SelectedItem="{Binding SelectedReservation}" Margin="20,150,20,320" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Name="DataGridReservation" AutoGenerateColumns="False" Background="White" HorizontalGridLinesBrush="#FF0570C9" VerticalGridLinesBrush="#FF0570C9" >
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Код брони" Binding="{Binding reservation_code}" Width="*"/>
+                                <DataGridTextColumn Header="Дата бронирования" Binding="{Binding date_reservation}" Width="*"/>
+                                <DataGridTextColumn Header="Дата заезда" Binding="{Binding arrival_dates}" Width="*" />
+                                <DataGridTextColumn Header="Дата выезда" Binding="{Binding dates_of_departure}" Width="*"/>
+                                <DataGridTextColumn Header="Код клиента" Binding="{Binding client_code}" Width="*"/>
+                                <DataGridTextColumn Header="Код номера" Binding="{Binding ID_room}" Width="*"/>
+                                <DataGridTextColumn Header="Код сотрудника" Binding="{Binding ID_user}" Width="*"/>
+                                <DataGridTextColumn Header="Количество гостей" Binding="{Binding number_of_guests}" Width="*" />
+                                <DataGridTextColumn Header="Статус" Binding="{Binding status}" Width="*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+                            <Button Uid="0" Width="250"  Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3">
+                                <TextBlock TextAlignment="Center" FontSize="14" ><Run Text="ПОИСК"/><LineBreak/><Run Text="СВОБОДНОГО НОМЕРА"/></TextBlock>
+
+                            </Button>
+                            <Button x:Name="ButtonCreate1" Command="{Binding AddCommandRes}" Uid="1" Width="250" Content=" СОЗДАТЬ БРОНЬ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" FontSize="14" Click="CreateReservation"/>
+                            <Button x:Name="ButtonSearchReservation" Uid="2" Width="250" Content=" НАЙТИ БРОНЬ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" FontSize="14" Click="SearchReservation"/>
+                            <Button x:Name="ButtonAccomodation" Uid="3" Width="250" Content="ПРОЖИВАНИЕ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" FontSize="14" Click="ClickAccommodation"/>
+
+
+                        </StackPanel>
+                        <Grid x:Name="GridCursor" Height="5" Background="#FF348CD4" HorizontalAlignment="Stretch" Margin="40,50,50,865"/>
+
+                    </Grid>
+
+                </TabItem>
+                <TabItem Header="Управление номерами" Foreground="White"   FontSize="16" >
+                    <Grid Margin="0,10,0,0"  Background="White">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="382,100,382,367" >
+                            <Label FontSize="24" Foreground="#FF348CD4" FontFamily="Segoe UI" Content="НОМЕРНОЙ ФОНД"/>
+                        </StackPanel>
+                        <DataGrid Margin="20,150,20,20" ItemsSource="{Binding Hotel_rooms}" SelectedItem="{Binding SelectedClient}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" Name="DataGridHotel_room" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Код номера" Binding="{Binding ID_room}" Width="*"/>
+                                <DataGridTextColumn Header="Номер коттеджа" Binding="{Binding room_number}" Width="*" />
+                                <DataGridTextColumn  Header="Категория номера" Binding="{Binding room_category}"    Width="*"/>
+                                <DataGridTextColumn Header="Состояние номера" Binding="{Binding condition}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+                            <Button Uid="1" Width="250"  Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3"  Content="Категории номеров" Click="ClickRoom_category"/>
+                            
+                        </StackPanel>
+                        <Grid x:Name="GridCursorategory" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Height="5" Background="#FF348CD4" Margin="35,50,50,462"/>
+
+                    </Grid>
+
+
+                </TabItem>
+                <TabItem Header="Профили гостей"  Foreground="White"  FontSize="16" >
+
+                    <Grid Margin="0,10,0,0"  Background="White">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="382,100,382,367" >
+                            <Label FontSize="24" Foreground="#FF348CD4" FontFamily="Segoe UI" Content="ВСЕ КЛИЕНТЫ"/>
+                        </StackPanel>
+
+
+                        <DataGrid ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}" Margin="20,150,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" HorizontalGridLinesBrush="#FF0570C9" VerticalGridLinesBrush="#FF0570C9" Name="DataGridClient" AutoGenerateColumns="False">
+                            <DataGrid.DataContext>
+                                <Models:Client/>
+                            </DataGrid.DataContext>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Код клиента" Binding="{Binding client_code}" Width="*" MinWidth="10"/>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding surname}" Width="*" />
+                                <DataGridTextColumn Header="Имя" Binding="{Binding name}" Width="*" />
+                                <DataGridTextColumn Header="Отчество" Binding="{Binding patronymic}" Width="*" />
+                                <DataGridTextColumn Header="Номер телефона" Binding="{Binding phone_number}"  Width="*"/>
+                                <DataGridTextColumn Header="e-mail" Binding="{Binding e_mail}" Width="*"/>
+                                <DataGridTextColumn Header="Гражданство" Binding="{Binding citizenship}" Width="*"/>
+                                <DataGridTextColumn Header="Паспортные данные" Binding="{Binding pasport_data}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+
+                            <Button x:Name="ButtonCreateClient" Command="{Binding AddCommandCl}" Uid="0" Width="200" Content="НОВЫЙ КЛИЕНТ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3"  FontSize="14" Click="AddClient"/>
+                            <Button x:Name="ButtonSearchClient" Uid="1" Width="200" Content=" НАЙТИ КЛИЕНТА" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3"  FontSize="14"/>
+                            <Button x:Name="SaveClient" Command="{Binding SaveCommand}" Uid="2" Width="200" Content="СОХРАНИТЬ" Height="50"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3"  FontSize="14"/>
+                            <Button x:Name="UpdateClient" Uid="3" Width="200" Content="ИЗМЕНИТЬ" Height="50"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" FontSize="14"/>
+                            <Button x:Name="DeleteClient" Command="{Binding RemoveCommandCl}" CommandParameter="{Binding SelectedClient}" Uid="4" Width="200" Content="УДАЛИТЬ" Height="50"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3"  FontSize="14"/>
+
+
+                        </StackPanel>
+                        <Grid x:Name="GridCursorClient" HorizontalAlignment="Stretch" Height="5" Background="#FF348CD4" Margin="35,50,50,462"/>
+                    </Grid>
+
+                </TabItem>
+                <TabItem Header="Дополнительные услуги" Foreground="White"  FontSize="16" >
+                    <Grid Margin="0,10,0,0"  Background="White">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="200,100,200,367" >
+                            <Label FontSize="24" Foreground="#FF348CD4" FontFamily="Segoe UI" Content="ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ"/>
+                        </StackPanel>
+
+
+                        <DataGrid ItemsSource="{Binding Additional_services}" SelectedItem="{Binding SelectedAdditional_services}" Margin="20,150,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" AutoGenerateColumns="False" Name="DataGridAdditional">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Код услуги" Binding="{Binding ID_additional_services}" Width="*" />
+                                <DataGridTextColumn Header="Название" Binding="{Binding name}" Width="*" />
+                                <DataGridTextColumn Header="Описание" Binding="{Binding description}" Width="*" />
+                                <DataGridTextColumn Header="Стоимость" Binding="{Binding current_price}" Width="*" />
+                                <DataGridTextColumn Header="Начало рабочего дня" Binding="{Binding beginning_of_work}" Width="*" />
+                                <DataGridTextColumn Header="Конец рабочего дня" Binding="{Binding end_of_work}" Width="*"/>
+                            </DataGrid.Columns>
+                            <DataGrid.DataContext>
+                                <Models:Additional_services/>
+                            </DataGrid.DataContext>
+                        </DataGrid>
+
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+
+                            <Button x:Name="ButtonService_check" Uid="0" Width="200" Content="ОКАЗАННЫЕ УСЛУГИ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" FontSize="14" Click="Service_checkView"/>
+
+                            <Button x:Name="ButtonAddAdServCl" Uid="2" Width="200" Content="ОКАЗАТЬ УСЛУГУ" Height="50"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" FontSize="14"/>
+
+
+
+                        </StackPanel>
+                        <Grid x:Name="GridCursorAdServ" Width="150" Height="5" Background="#FF348CD4" HorizontalAlignment="Left" Margin="35,45,0,462"/>
+                    </Grid>
+
+                </TabItem>
+
+            </TabControl>
+        </Grid>
+    </StackPanel>
+
+
+</Page>
